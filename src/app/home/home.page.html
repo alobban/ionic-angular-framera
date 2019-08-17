@@ -1,8 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-grid class="custom-header">
+      <ion-row>
+        <ion-col>
+          <div style="font-size: 2rem">{{ pigCount | number }} pigs</div>
+        </ion-col>
+        <ion-col>
+          Group: {{ groupId }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{ groupAge }} weeks old</ion-col>
+        <ion-col>
+          Started: {{ startDate | amDateFormat: 'YYYY/MM/DD' }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button fill="outline" size="large" (click)="presentActionSheet()">{{ 'Manage Pigs' | uppercase}}</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button fill="solid" size="large" color="secondary">
+            {{ 'Logbook' | uppercase}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 

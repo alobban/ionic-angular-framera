@@ -1,1 +1,9 @@
+.custom-header {
+  height: 10rem;
+  color: #FFFFFF;
+  background-image: linear-gradient(232deg, #4b626e, #263238);
+}
 
+ion-toolbar ion-button {
+  --border-radius: 1.25rem;
+}
