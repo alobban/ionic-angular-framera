@@ -12,7 +12,7 @@ export class HomePage {
   pigCount = 1345;
   groupAge = 7;
   groupId = 20190214;
-  startDate = '09/01/2018';
+  startDate = '2018-09-01';
 
   constructor(public actionSheetCtrl: ActionSheetController) {}
 
