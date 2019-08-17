@@ -16,11 +16,11 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col>
-          <ion-button fill="outline" size="large" (click)="presentActionSheet()">{{ 'Manage Pigs' | uppercase}}</ion-button>
+        <ion-col sizeXs="6">
+          <ion-button fill="outline" size="large" id="manage-pig-btn" (click)="presentActionSheet()">{{ 'Manage Pigs' | uppercase}}</ion-button>
         </ion-col>
-        <ion-col>
-          <ion-button fill="solid" size="large" color="secondary">
+        <ion-col sizeXs="6">
+          <ion-button fill="solid" size="large" id="logbook-btn" [routerLink]="['/logbook']">
             {{ 'Logbook' | uppercase}}
           </ion-button>
         </ion-col>
