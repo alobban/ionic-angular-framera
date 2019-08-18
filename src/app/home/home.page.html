@@ -31,7 +31,78 @@
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    TEAM ({{ team.length }})
   </div>
+  <ion-card *ngIf="!displayAll">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="img-col">
+            <ion-avatar>
+              <ion-img class="thumbnail-size" [src]="displayMember?.picture.thumbnail"></ion-img>
+            </ion-avatar>
+          </ion-col>
+          <ion-col>
+            <ion-row class="name-display">{{ displayMember?.name.first + ' ' + displayMember?.name.last | titlecase }}</ion-row>
+            <ion-row class="last-login">last check in: {{ displayMember?.login.last | amTimeAgo }}</ion-row>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">textsms</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">call</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-buttons>
+        <ion-button class="tgl-btn-position" (click)="toggleMembers()">
+          <i class="material-icons">expand_more</i>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="displayAll">
+    <ion-card-content>
+      <ion-grid *ngFor="let member of team">
+        <ion-row>
+          <ion-col class="img-col">
+            <ion-avatar>
+              <ion-img class="thumbnail-size" [src]="member?.picture.thumbnail"></ion-img>
+            </ion-avatar>
+          </ion-col>
+          <ion-col>
+            <ion-row class="name-display">{{ member?.name.first + ' ' + member?.name.last | titlecase }}</ion-row>
+            <ion-row class="last-login">last check in: {{ member?.login.last | amTimeAgo }}</ion-row>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">textsms</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">call</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-buttons>
+        <ion-button class="tgl-btn-position" (click)="toggleMembers()">
+          <i class="material-icons">expand_more</i>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
