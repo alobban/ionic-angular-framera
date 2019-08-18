@@ -21,9 +21,24 @@ ion-toolbar ion-button {
   --border-radius: 0.75rem;
 }
 
+.team-card {
+  border-radius: 15px;
+  margin: 0 16px;
+  box-shadow: 0 0 10px 10px rgba(38, 50, 56, 0.1);
+
+  .card-content-md {
+    padding-bottom: 0;
+  }
+
+  ion-grid {
+    height: 70px;
+  }
+}
+
 .img-col {
   width: 56px;
   flex-grow: 0;
+
   ion-avatar {
     width: 56px;
   }
@@ -34,11 +49,6 @@ ion-toolbar ion-button {
   font-weight: 500;
 }
 
-ion-card {
-  border-radius: 15px;
-  box-shadow: 5px 5px 5px 5px rgba(38, 50, 56, 0.1);
-}
-
 .last-login {
   font-size: 14px;
 }
@@ -46,14 +56,15 @@ ion-card {
 .icon-col {
   flex-grow: 0;
   width: 56px;
+
   ion-buttons {
     border: 1px solid #000000;
     border-radius: 50%;
     height: 41px;
     width: 41px;
-    ion-button {
-      position: relative;
-      right: 2px;
+
+    i.material-icons {
+      font-size: 20px;
     }
   }
 }
@@ -67,6 +78,41 @@ ion-card {
   margin: auto;
 }
 
-.card-content-md {
-  padding-bottom: 0;
+.alerts-card {
+  border-radius: 15px;
+  margin: 0 16px;
+  box-shadow: 0 0 10px 10px rgba(38, 50, 56, 0.1);
+
+  ion-card-content > div.alert-heading {
+    height: 35px;
+  }
+
+  .alert-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .alert-msg {
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+  }
+
+  .alert-time {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.4)
+  }
+}
+
+ion-toggle {
+  position: relative;
+  top: -0.5rem;
+}
+
+.dot {
+  font-size: 10px;
+  position: relative;
+  top: 2px;
+  right: -3px;
+  color: red;
 }

@@ -18,6 +18,14 @@ export class HomePage implements OnInit {
   displayMember;
   displayAll = false;
 
+  alerts = [
+    {
+      title: 'Water cons. alert',
+      message: '0.48 gal avg. per day',
+      timestamp: new Date(moment().subtract(Math.floor(Math.random() * 24), 'hour').format())
+    }
+  ];
+
   constructor(
       public actionSheetCtrl: ActionSheetController,
       private httpService: HttpServiceService
@@ -48,15 +56,26 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.httpService.getTeamMember()
+    //   .subscribe(data => {
+    //     console.log('team', data.results);
+    //     this.team = data.results;
+    //     this.generateCheckInTimes();
+    //     console.log('member after checkin generation', this.team);
+    //     this.displayMember = this.team[0];
+    //   });
+  }
+
+  ionViewWillEnter() {
     this.httpService.getTeamMember()
       .subscribe(data => {
-        console.log('team', data.results);
         this.team = data.results;
         this.generateCheckInTimes();
-        console.log('member after checkin generation', this.team);
         this.displayMember = this.team[0];
       });
   }
+
+
 
   generateCheckInTimes() {
     this.team = this.team.map(member => {

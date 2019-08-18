@@ -33,7 +33,7 @@
   <div class="ion-padding">
     TEAM ({{ team.length }})
   </div>
-  <ion-card *ngIf="!displayAll">
+  <ion-card class="team-card" *ngIf="!displayAll">
     <ion-card-content>
       <ion-grid>
         <ion-row>
@@ -69,7 +69,7 @@
       </ion-buttons>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngIf="displayAll">
+  <ion-card class="team-card" *ngIf="displayAll">
     <ion-card-content>
       <ion-grid *ngFor="let member of team">
         <ion-row>
@@ -103,6 +103,38 @@
           <i class="material-icons">expand_more</i>
         </ion-button>
       </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-padding">
+    ALERTS ({{ alerts.length }})
+  </div>
+  <ion-card class="alerts-card" *ngFor="let alert of alerts">
+    <ion-card-content>
+      <div class="alert-heading" fxLayout="row">
+        <div fxFlex="10%">
+          <ion-icon name="water"></ion-icon>
+        </div>
+        <div class="alert-title" fxFlex="70%">
+          {{ alert.title }}
+        </div>
+        <div fxFlex="5%">
+          <i class="material-icons">vibration</i>
+        </div>
+        <div fxFlex="15%">
+          <ion-toggle></ion-toggle>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="10%">
+          <i class="material-icons dot">lens</i>
+        </div>
+        <div class="alert-msg" fxFlex="55%">
+          {{ alert.message }}
+        </div>
+        <div class="alert-time" fxFlex="35%">
+          {{ alert.timestamp | amTimeAgo }}
+        </div>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
