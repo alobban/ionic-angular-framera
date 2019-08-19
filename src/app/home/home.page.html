@@ -1,14 +1,144 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-grid class="custom-header">
+      <div fxLayout="row">
+        <div fxLayout="column" fxFlex="50%">
+          <div>
+            <div class="pig-count">{{ pigCount | number }} pigs</div>
+          </div>
+          <div>
+            {{ groupAge }} weeks old
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="end end" fxFlex="50%">
+          <div class="group-id">
+            Group: <span>{{ groupId }}</span>
+          </div>
+          <div>
+            Started: {{ startDate | amDateFormat: 'YYYY/MM/DD' }}
+          </div>
+        </div>
+      </div>
+      <div class="header-btns" fxLayout="row">
+        <div fxFlex="50%">
+          <ion-button fill="outline" size="large" id="manage-pig-btn" (click)="presentActionSheet()">{{ 'Manage Pigs' | uppercase}}</ion-button>
+        </div>
+        <div fxLayoutAlign="end" fxFlex="50%">
+          <ion-button fill="solid" size="large" id="logbook-btn" [routerLink]="['/logbook']">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Logbook' | uppercase}}
+          </ion-button>
+        </div>
+      </div>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    TEAM ({{ team.length }})
   </div>
+  <ion-card class="team-card" *ngIf="!displayAll">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="img-col">
+            <ion-avatar>
+              <ion-img class="thumbnail-size" [src]="displayMember?.picture.thumbnail"></ion-img>
+            </ion-avatar>
+          </ion-col>
+          <ion-col>
+            <ion-row class="name-display">{{ displayMember?.name.first + ' ' + displayMember?.name.last | titlecase }}</ion-row>
+            <ion-row class="last-login">last check in: {{ displayMember?.login.last | amTimeAgo }}</ion-row>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">textsms</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">call</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-buttons>
+        <ion-button class="tgl-btn-position" (click)="toggleMembers()">
+          <i class="material-icons">expand_more</i>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="team-card" *ngIf="displayAll">
+    <ion-card-content>
+      <ion-grid *ngFor="let member of team">
+        <ion-row>
+          <ion-col class="img-col">
+            <ion-avatar>
+              <ion-img class="thumbnail-size" [src]="member?.picture.thumbnail"></ion-img>
+            </ion-avatar>
+          </ion-col>
+          <ion-col>
+            <ion-row class="name-display">{{ member?.name.first + ' ' + member?.name.last | titlecase }}</ion-row>
+            <ion-row class="last-login">last check in: {{ member?.login.last | amTimeAgo }}</ion-row>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">textsms</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+          <ion-col class="icon-col">
+            <ion-buttons>
+              <ion-button>
+                <i class="material-icons">call</i>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-buttons>
+        <ion-button class="tgl-btn-position" (click)="toggleMembers()">
+          <i class="material-icons">expand_more</i>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-padding">
+    ALERTS ({{ alerts.length }})
+  </div>
+  <ion-card class="alerts-card" *ngFor="let alert of alerts">
+    <ion-card-content>
+      <div class="alert-heading" fxLayout="row">
+        <div fxFlex="10%">
+          <ion-icon class="water-icon" name="water"></ion-icon>
+        </div>
+        <div class="alert-title" fxFlex="65%">
+          {{ alert.title }}
+        </div>
+        <div fxFlex="5%">
+          <i class="material-icons">vibration</i>
+        </div>
+        <div fxFlex="20%">
+          <ion-toggle></ion-toggle>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="10%">
+          <i class="material-icons dot">lens</i>
+        </div>
+        <div class="alert-msg" fxFlex="55%">
+          {{ alert.message }}
+        </div>
+        <div class="alert-time" fxFlex="35%">
+          {{ alert.timestamp | amTimeAgo }}
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
