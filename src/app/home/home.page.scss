@@ -25,19 +25,19 @@
   --color: #FFFFFF;
   --background: rgb(38, 50, 56);
   --border-color: #FFFFFF;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 #logbook-btn {
   --color: rgb(38, 50, 56);
   --background: rgb(201, 235, 66);
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 ion-toolbar ion-button {
-  --border-radius: 1rem;
+  --border-radius: 16px;
   height: 55px;
-  width: 180px;
+  width: 172px;
 }
 
 .team-card {
@@ -64,12 +64,14 @@ ion-toolbar ion-button {
 }
 
 .name-display {
+  color: rgb(38, 50, 56);
   font-size: 16px;
   font-weight: 500;
 }
 
 .last-login {
   font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .icon-col {
@@ -77,13 +79,14 @@ ion-toolbar ion-button {
   width: 56px;
 
   ion-buttons {
-    border: 1px solid #000000;
+    border: 1px solid rgb(38, 50, 56);
     border-radius: 50%;
     height: 41px;
     width: 41px;
 
     i.material-icons {
       font-size: 20px;
+      color: rgb(38, 50, 56);
     }
   }
 }
@@ -104,11 +107,16 @@ ion-toolbar ion-button {
 
   ion-card-content > div.alert-heading {
     height: 35px;
+
+    i.material-icons {
+      //color: rgba(0, 0, 0, 0.6);
+    }
   }
 
   .alert-title {
     font-size: 16px;
     font-weight: bold;
+    color: rgb(38, 50, 56);
   }
 
   .alert-msg {
@@ -119,7 +127,7 @@ ion-toolbar ion-button {
 
   .alert-time {
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.4)
+    color: rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -140,4 +148,5 @@ ion-toggle {
   font-size: 20px;
   position: relative;
   top: 2px;
+  color: rgb(38, 50, 56);
 }
