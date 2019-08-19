@@ -35,15 +35,15 @@ export class HomePage implements OnInit {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'add pigs',
+          text: 'Add Pigs',
           handler: () => console.log('Add pigs clicked')
         },
         {
-          text: 'move pigs',
+          text: 'Move Pigs',
           handler: () => console.log('Move pigs clicked')
         },
         {
-          text: 'sale pigs',
+          text: 'Sale Pigs',
           handler: () => console.log('Sale pigs clicked')
         }
       ]

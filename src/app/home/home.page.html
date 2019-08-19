@@ -1,30 +1,34 @@
 <ion-header>
   <ion-toolbar>
     <ion-grid class="custom-header">
-      <ion-row>
-        <ion-col>
-          <div style="font-size: 2rem">{{ pigCount | number }} pigs</div>
-        </ion-col>
-        <ion-col>
-          Group: {{ groupId }}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>{{ groupAge }} weeks old</ion-col>
-        <ion-col>
-          Started: {{ startDate | amDateFormat: 'YYYY/MM/DD' }}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col sizeXs="6">
+      <div fxLayout="row">
+        <div fxLayout="column" fxFlex="50%">
+          <div>
+            <div class="pig-count">{{ pigCount | number }} pigs</div>
+          </div>
+          <div>
+            {{ groupAge }} weeks old
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="end end" fxFlex="50%">
+          <div class="group-id">
+            Group: <span>{{ groupId }}</span>
+          </div>
+          <div>
+            Started: {{ startDate | amDateFormat: 'YYYY/MM/DD' }}
+          </div>
+        </div>
+      </div>
+      <div class="header-btns" fxLayout="row">
+        <div fxFlex="50%">
           <ion-button fill="outline" size="large" id="manage-pig-btn" (click)="presentActionSheet()">{{ 'Manage Pigs' | uppercase}}</ion-button>
-        </ion-col>
-        <ion-col sizeXs="6">
+        </div>
+        <div fxLayoutAlign="end" fxFlex="50%">
           <ion-button fill="solid" size="large" id="logbook-btn" [routerLink]="['/logbook']">
-            {{ 'Logbook' | uppercase}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Logbook' | uppercase}}
           </ion-button>
-        </ion-col>
-      </ion-row>
+        </div>
+      </div>
     </ion-grid>
   </ion-toolbar>
 </ion-header>
@@ -112,15 +116,15 @@
     <ion-card-content>
       <div class="alert-heading" fxLayout="row">
         <div fxFlex="10%">
-          <ion-icon name="water"></ion-icon>
+          <ion-icon class="water-icon" name="water"></ion-icon>
         </div>
-        <div class="alert-title" fxFlex="70%">
+        <div class="alert-title" fxFlex="65%">
           {{ alert.title }}
         </div>
         <div fxFlex="5%">
           <i class="material-icons">vibration</i>
         </div>
-        <div fxFlex="15%">
+        <div fxFlex="20%">
           <ion-toggle></ion-toggle>
         </div>
       </div>
