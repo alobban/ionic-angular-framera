@@ -37,7 +37,7 @@
   <div class="ion-padding">
     TEAM ({{ team.length }})
   </div>
-  <ion-card class="team-card" *ngIf="!displayAll">
+  <ion-card class="team-card" [@memberCard]="state">
     <ion-card-content>
       <ion-grid>
         <ion-row>
@@ -66,14 +66,14 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-buttons>
+      <ion-buttons [@initState]="state">
         <ion-button class="tgl-btn-position" (click)="toggleMembers()">
           <i class="material-icons">expand_more</i>
         </ion-button>
       </ion-buttons>
     </ion-card-content>
   </ion-card>
-  <ion-card class="team-card" *ngIf="displayAll">
+  <ion-card class="team-card" [@membersCard]="state">
     <ion-card-content>
       <ion-grid *ngFor="let member of team">
         <ion-row>
@@ -102,13 +102,14 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-buttons>
+      <ion-buttons [@returnState]="state">
         <ion-button class="tgl-btn-position" (click)="toggleMembers()">
           <i class="material-icons">expand_less</i>
         </ion-button>
       </ion-buttons>
     </ion-card-content>
   </ion-card>
+  <div [@alertCard]="state">
   <div class="ion-padding">
     ALERTS ({{ alerts.length }})
   </div>
@@ -141,4 +142,5 @@
       </div>
     </ion-card-content>
   </ion-card>
+  </div>
 </ion-content>
